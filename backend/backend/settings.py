@@ -27,7 +27,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 # ALLOWED_HOSTS specifies a list of strings representing the host/domain names
 # that this Django site can serve. In production, you'd list your domain names.
 # For development, '127.0.0.1', 'localhost' are common. '*' allows all hosts (use ONLY for development/testing).
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'postgresql://csadmin:GWcMRpQLOfHPXkSNBBmhBPgeXvplCZ9D@dpg-d1n1bbmuk2gs739dd1mg-a.virginia-postgres.render.com/taskmanagerdb_rjc6']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','task-manager-backend-yd6l.onrender.com','postgresql://csadmin:GWcMRpQLOfHPXkSNBBmhBPgeXvplCZ9D@dpg-d1n1bbmuk2gs739dd1mg-a.virginia-postgres.render.com/taskmanagerdb_rjc6']
 # For Vercel/Render/Heroku deployment, you'll add your frontend and backend URLs here later.
 # Example: ALLOWED_HOSTS = ['your-frontend-domain.vercel.app', 'your-backend-domain.render.com', '127.0.0.1', 'localhost']
 
