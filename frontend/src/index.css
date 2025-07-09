@@ -1,0 +1,446 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* --- Authentication and Dashboard Styles --- */
+
+.auth-container, .dashboard-container {
+  background-color: #ffffff; /* White background */
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  width: 90%;
+  margin: 2rem auto; /* Center with some top/bottom margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-title, .dashboard-heading {
+  color: #8C0327; /* Primary color */
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Space between form groups */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels to the left */
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #260101; /* Dark text color */
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #BFBFBF; /* Gray border */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #260101;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #F2B544; /* Secondary color on focus */
+  box-shadow: 0 0 0 3px rgba(242, 181, 68, 0.3); /* Soft glow on focus */
+}
+
+.auth-button, .logout-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #8C0327; /* Primary color */
+  color: #F2F2F2; /* Light text color */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(140, 3, 39, 0.2); /* Shadow for buttons */
+}
+
+.auth-button:hover:not(:disabled), .logout-button:hover:not(:disabled) {
+  background-color: #A60335; /* Slightly darker primary on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.auth-button:disabled {
+  background-color: #BFBFBF; /* Gray for disabled state */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.auth-switch-text {
+  color: #260101;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.auth-switch-button {
+  background: none;
+  border: none;
+  color: #8C0327; /* Primary color for link */
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.auth-switch-button:hover {
+  color: #A60335; /* Slightly darker primary on hover */
+}
+
+.error-message {
+  color: #8C0327; /* Primary color for error messages */
+  background-color: rgba(140, 3, 39, 0.1); /* Light background for error */
+  border: 1px solid #8C0327;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Dashboard specific styles */
+.dashboard-container {
+  padding: 3rem;
+}
+
+.dashboard-text {
+  color: #260101;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.logout-button {
+  margin-top: 1.5rem;
+  background-color: #F2B544; /* Secondary color for logout button */
+  color: #260101; /* Dark text for logout button */
+  box-shadow: 0 4px 8px rgba(242, 181, 68, 0.3);
+}
+
+.logout-button:hover:not(:disabled) {
+  background-color: #E0A63B; /* Slightly darker secondary on hover */
+}
+
+.task-section-placeholder {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px dashed #BFBFBF;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #BFBFBF;
+  font-style: italic;
+}
+
+.task-section-placeholder h3 {
+  color: #260101;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments for forms and dashboard */
+@media (max-width: 600px) {
+  .auth-container, .dashboard-container {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  .auth-title, .dashboard-heading {
+    font-size: 1.8rem;
+  }
+  .auth-button, .logout-button {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* --- Task Management Section Styles --- */
+
+.task-management-section {
+  width: 100%;
+  max-width: 800px; /* Max width for task section */
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  color: #8C0327; /* Primary color */
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.add-task-button {
+  background-color: #F2B544; /* Secondary color */
+  color: #260101; /* Dark text */
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(242, 181, 68, 0.3);
+}
+
+.add-task-button:hover {
+  background-color: #E0A63B; /* Slightly darker secondary on hover */
+  transform: translateY(-2px);
+}
+
+/* Task List Styles */
+.task-list-container {
+  width: 100%;
+}
+
+.no-tasks-message {
+  text-align: center;
+  color: #BFBFBF; /* Gray color */
+  font-style: italic;
+  padding: 2rem;
+  border: 1px dashed #BFBFBF;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.task-item {
+  background-color: #F2F2F2; /* Light background for task item */
+  border: 1px solid #BFBFBF; /* Gray border */
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 1rem; /* Space between info and actions */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.task-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.task-title {
+  color: #260101; /* Dark text */
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.task-description {
+  color: #260101;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #BFBFBF; /* Gray text */
+}
+
+.task-due-date {
+  font-weight: bold;
+  color: #8C0327; /* Primary color for due date */
+}
+
+.task-status {
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+  white-space: nowrap; /* Prevent status text from wrapping */
+}
+
+/* Status specific colors */
+.status-pending { background-color: #F2B544; color: #260101; } /* Secondary for pending */
+.status-in-progress { background-color: #8C0327; color: #F2F2F2; } /* Primary for in-progress */
+.status-completed { background-color: #4CAF50; color: white; } /* Green for completed */
+.status-deferred { background-color: #BFBFBF; color: #260101; } /* Gray for deferred */
+.status-cancelled { background-color: #F44336; color: white; } /* Red for cancelled */
+
+
+.task-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.task-action-button {
+  background-color: #BFBFBF; /* Default gray for action buttons */
+  color: #260101;
+  border: none;
+  border-radius: 5px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-action-button.edit-button {
+  background-color: #F2B544; /* Secondary color for edit */
+  color: #260101;
+}
+
+.task-action-button.edit-button:hover {
+  background-color: #E0A63B;
+}
+
+.task-action-button.delete-button {
+  background-color: #8C0327; /* Primary color for delete */
+  color: #F2F2F2;
+}
+
+.task-action-button.delete-button:hover {
+  background-color: #A60335;
+}
+
+.task-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Task Form Styles (reusing some auth-form styles) */
+.task-form-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.task-form-title {
+  color: #8C0327;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-form .form-group label {
+  font-size: 0.95rem;
+}
+
+.task-form .form-input {
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+}
+
+.task-form textarea.form-input {
+  resize: vertical; /* Allow vertical resizing for description */
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-actions .auth-button {
+  flex: 1; /* Make buttons take equal width */
+}
+
+.form-actions .cancel-button {
+  background-color: #BFBFBF; /* Gray for cancel button */
+  color: #260101;
+  box-shadow: none;
+}
+
+.form-actions .cancel-button:hover {
+  background-color: #A6A6A6;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments for task section */
+@media (max-width: 768px) {
+  .task-management-section {
+    padding: 1.5rem;
+  }
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end; /* Push buttons to the right on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .task-item {
+    padding: 1rem;
+  }
+  .task-title {
+    font-size: 1.2rem;
+  }
+  .task-description, .task-meta {
+    font-size: 0.8rem;
+  }
+  .task-action-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .task-form-container {
+    padding: 1.5rem;
+  }
+  .form-actions {
+    flex-direction: column; /* Stack buttons vertically on very small screens */
+  }
+}
