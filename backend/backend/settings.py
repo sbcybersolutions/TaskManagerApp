@@ -139,13 +139,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# Add this for WhiteNoise if you decide to use it for static files in production
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STORAGES = {
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
+# Add this for WhiteNoise for serving static files in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # This tells Django where to collect static files
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 # Default primary key field type
