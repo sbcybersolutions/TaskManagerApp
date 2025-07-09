@@ -1,12 +1,6 @@
 // frontend/src/context/AuthContext.tsx
 import React, { createContext, useState, useContext, ReactNode, useEffect, useCallback } from 'react';
 
-
-// Base URL for your Django backend API
-// Read from environment variables, defaulting to local if not set.
-// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
-
-
 // Define the shape of the user object that will be stored in the context
 interface User {
   username: string;
@@ -26,7 +20,7 @@ interface AuthContextType {
   error: string | null; // Stores any authentication error messages
 }
 
-// Create the AuthContext with a default (null) value.
+// Create the AuthContext with a default (undefined) value.
 // The actual provider will wrap our application.
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -50,8 +44,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // State to store error messages
   const [error, setError] = useState<string | null>(null);
 
-  // Base URL for your Django backend API
-  const API_BASE_URL = 'https://task-manager-backend-yd6l.onrender.com/api'; // Make sure this matches your Django server URL
+  // THIS IS THE CRUCIAL LINE:
+  // Base URL for your Django backend API.
+  // It reads from the environment variable REACT_APP_API_BASE_URL (set in Vercel/vercel.json)
+  // or defaults to the local development URL if the env var is not found.
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
+
 
   // Effect to load tokens from localStorage on initial component mount
   // and set the user if tokens exist (simple check, proper validation would be better)
@@ -105,7 +103,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []); // Empty dependency array means this function is stable and won't re-create
 
   // Function to handle user registration
-  const register = useCallback(async (username: string, email: string, password: string, password2: string) => {
+  const register = useCallback(
+    async (
+      username: string,
+      email: string,
+      password: string,
+      password2: string
+    ) => {
     setLoading(true);
     setError(null);
     try {
