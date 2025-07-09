@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "REACT_APP_API_BASE_URL": "https://task-manager-backend-yd6l.onrender.com/"
-    }
-  }
-}
