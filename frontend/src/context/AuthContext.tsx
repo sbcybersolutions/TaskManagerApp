@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/token/`, {
+      const response = await fetch(`${API_BASE_URL}/token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/register/`, {
+      const response = await fetch(`${API_BASE_URL}/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
