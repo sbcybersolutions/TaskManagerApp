@@ -3,10 +3,10 @@
 import os
 from pathlib import Path
 from datetime import timedelta # Import timedelta for JWT settings
-from dotenv import load_dotenv
+from dotenv import load_dotenv # Import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv() # This will load variables from the .env file in the same directory or parent directories
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # You should replace 'your-secret-key-here' with a strong, randomly generated key.
 # For production, it's best to load this from an environment variable.
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ok1d_+am=23vx*ee^soid*4yk01d+iuq_ql_n9+*x!i(&ufcj#')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your_super_secret_and_unique_key_for_development')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Set DEBUG to False in production.
@@ -27,9 +27,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 # ALLOWED_HOSTS specifies a list of strings representing the host/domain names
 # that this Django site can serve. In production, you'd list your domain names.
 # For development, '127.0.0.1', 'localhost' are common. '*' allows all hosts (use ONLY for development/testing).
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','task-manager-backend-yd6l.onrender.com','postgresql://csadmin:GWcMRpQLOfHPXkSNBBmhBPgeXvplCZ9D@dpg-d1n1bbmuk2gs739dd1mg-a.virginia-postgres.render.com/taskmanagerdb_rjc6']
-# For Vercel/Render/Heroku deployment, you'll add your frontend and backend URLs here later.
-# Example: ALLOWED_HOSTS = ['your-frontend-domain.vercel.app', 'your-backend-domain.render.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'task-manager-backend-yd6l.onrender.com']
 
 
 # Application definition
@@ -77,7 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.messages',
             ],
         },
     },
@@ -94,7 +92,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # For production, environment variables are highly recommended for security.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Use PostgreSQL engine
+        'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql_psycopg2'),
         'NAME': os.environ.get('DB_NAME', 'taskmanagerdb'), # Database name
         'USER': os.environ.get('DB_USER', 'csadmin'), # Database user
         'PASSWORD': os.environ.get('DB_PASSWORD', 'AnswrM3Questions3'), # Database password
@@ -153,6 +151,11 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# AUTH_USER_MODEL
+# Specifies the custom user model to use for authentication.
+# This must be set if you define a custom user model.
+AUTH_USER_MODEL = 'users.CustomUser'
+
 
 # Django REST Framework settings
 # https://www.django-rest-framework.org/api-guide/settings/
@@ -209,43 +212,7 @@ SIMPLE_JWT = {
 # https://pypi.org/project/django-cors-headers/
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # Your React development server
-    # Add your frontend's production URL here once deployed
-    "https://task-manager-app-chi-eight.vercel.app",
+    "https://task-manager-app-inky-ten.vercel.app", # Your deployed Vercel frontend URL
 ]
-# Or, if you need to allow all origins during development (less secure, use with caution):
-# CORS_ALLOW_ALL_ORIGINS = True
-# If CORS_ALLOW_ALL_ORIGINS is True, CORS_ALLOWED_ORIGINS is ignored.
-# For production, always use CORS_ALLOWED_ORIGINS with specific domains.
 
 CORS_ALLOW_CREDENTIALS = True # Allow cookies/authentication headers to be sent with cross-origin requests
-
-# Optional: If you need to allow specific methods or headers beyond defaults
-# CORS_ALLOW_METHODS = [
-#     'DELETE',
-#     'GET',
-#     'OPTIONS',
-#     'PATCH',
-#     'POST',
-#     'PUT',
-# ]
-
-# CORS_ALLOW_HEADERS = [
-#     'accept',
-#     'accept-encoding',
-#     'authorization',
-#     'content-type',
-#     'dnt',
-#     'origin',
-#     'user-agent',
-#     'x-csrftoken',
-#     'x-requested-with',
-# ]
-
-# backend/backend/settings.py
-
-# ... (rest of your settings.py content) ...
-
-# AUTH_USER_MODEL
-# Specifies the custom user model to use for authentication.
-# This must be set if you define a custom user model.
-AUTH_USER_MODEL = 'users.CustomUser'
