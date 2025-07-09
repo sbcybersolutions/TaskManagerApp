@@ -16,7 +16,7 @@ const TaskList: React.FC<TaskListProps> = ({ onEditTask }) => {
   const [deleteLoading, setDeleteLoading] = useState<number | null>(null); // State to track which task is being deleted
 
   // Base URL for your Django backend API
-  const API_BASE_URL = 'http://127.0.0.1:8000/api';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
   // Function to fetch tasks from the backend
   const fetchTasks = useCallback(async () => {

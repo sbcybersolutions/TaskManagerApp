@@ -20,7 +20,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ taskToEdit, onSaveSuccess, onCancel
   const [error, setError] = useState<string | null>(null); // Error state for form submission
 
   // Base URL for your Django backend API
-  const API_BASE_URL = 'http://127.0.0.1:8000/api';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
   // Effect to populate form fields when `taskToEdit` changes (i.e., when entering edit mode)
   useEffect(() => {
