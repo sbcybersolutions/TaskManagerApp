@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext, ReactNode, useEffect, useCa
 
 // Base URL for your Django backend API
 // Read from environment variables, defaulting to local if not set.
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
 
 // Define the shape of the user object that will be stored in the context
@@ -51,7 +51,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [error, setError] = useState<string | null>(null);
 
   // Base URL for your Django backend API
-  const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Make sure this matches your Django server URL
+  const API_BASE_URL = 'https://task-manager-backend-yd6l.onrender.com/api'; // Make sure this matches your Django server URL
 
   // Effect to load tokens from localStorage on initial component mount
   // and set the user if tokens exist (simple check, proper validation would be better)
