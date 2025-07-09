@@ -210,7 +210,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # Your React development server
     # Add your frontend's production URL here once deployed
-    # "https://your-frontend-domain.vercel.app",
+    "https://task-manager-app-chi-eight.vercel.app",
 ]
 # Or, if you need to allow all origins during development (less secure, use with caution):
 # CORS_ALLOW_ALL_ORIGINS = True
